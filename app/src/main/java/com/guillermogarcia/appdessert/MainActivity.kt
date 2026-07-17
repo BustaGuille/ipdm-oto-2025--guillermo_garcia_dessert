@@ -29,11 +29,10 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -91,8 +90,8 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun DessertClickerApp(desserts: List<Dessert>) {
-    var revenue by rememberSaveable { mutableStateOf(0) }
-    var dessertsSold by rememberSaveable { mutableStateOf(0) }
+    var revenue by rememberSaveable { mutableIntStateOf(0) }
+    var dessertsSold by rememberSaveable { mutableIntStateOf(0) }
     
     val currentDessertIndex = determineDessertToShow(desserts, dessertsSold)
     val currentDessert = desserts[currentDessertIndex]
@@ -184,7 +183,6 @@ fun DessertClickerScreen(
     modifier: Modifier = Modifier
 ) {
     Box(modifier = modifier.fillMaxSize()) {
-        // Imagen de fondo (Bakery)
         Image(
             painter = painterResource(id = R.drawable.bakery_back),
             contentDescription = null,
@@ -199,7 +197,6 @@ fun DessertClickerScreen(
                     .fillMaxWidth(),
                 contentAlignment = Alignment.Center
             ) {
-                // Imagen del postre
                 Image(
                     painter = painterResource(id = dessertImageRes),
                     contentDescription = null,
@@ -211,7 +208,6 @@ fun DessertClickerScreen(
                 )
             }
             
-            // Panel inferior de estadísticas
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
